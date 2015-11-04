@@ -2,7 +2,7 @@ package info.cucumber.scala.api
 
 import info.cucumber.scala.ScalaDsl
 
-trait En {
+trait EN {
   this: ScalaDsl =>
 
   val Given = new Step

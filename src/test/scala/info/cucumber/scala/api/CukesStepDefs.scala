@@ -7,10 +7,8 @@ import org.scalatest.Matchers._
 import scala.collection.JavaConversions._
 import java.util.{List => JList, Map => JMap}
 
-/**
- * Created by vamudhan on 10/23/15.
- */
-class CukesStepDefs extends ScalaDsl with En {
+
+class CukesStepDefs extends ScalaDsl with EN {
 
   Given("""^I have (\d+) "([^"]*)" in my belly$"""){ (howMany:Int, what:String) =>
 
@@ -177,7 +175,7 @@ class CukesStepDefs extends ScalaDsl with En {
   }
 }
 
-class ThenDefs extends ScalaDsl with En {
+class ThenDefs extends ScalaDsl with EN {
   Then("""^I am "([^"]*)"$"""){ (arg0:String) =>
   }
 }
