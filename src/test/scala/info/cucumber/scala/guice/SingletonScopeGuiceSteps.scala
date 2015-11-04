@@ -3,12 +3,14 @@ package info.cucumber.scala.guice
 import javax.inject.Inject
 
 import com.google.inject.Provider
+import cucumber.runtime.java.guice.ScenarioScoped
 import info.cucumber.scala.ScalaDsl
 import info.cucumber.scala.api.EN
 import org.scalatest.Matchers._
 
 import scala.collection.mutable
 
+@ScenarioScoped
 class SingletonScopeGuiceSteps @Inject() (singletonScopeObjectProvider: Provider[SingletonScopeObject]) extends ScalaDsl
   with EN {
 

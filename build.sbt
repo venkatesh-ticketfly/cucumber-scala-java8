@@ -1,6 +1,8 @@
-name := "cucumber_scala_java8"
+organization := "info.cucumber"
 
-version := "1.0"
+name := "scala"
+
+version := "1.0.2"
 
 scalaVersion := "2.11.7"
 
@@ -23,3 +25,19 @@ libraryDependencies ++= Seq(
 compileOrder := CompileOrder.JavaThenScala
 
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v")
+
+credentials += Credentials(Path.userHome / ".artifactory" / ".credentials")
+
+resolvers ++= Seq(
+  "TFly Github Repo"                       at "http://ticketfly.github.com/repo",
+  "Ticketfly Artifactory (libs-snapshot)"  at "http://build.ticketfly.com/artifactory/libs-snapshot-local",
+  "Ticketfly Artifactory (libs-release)"   at "http://build.ticketfly.com/artifactory/libs-release-local"
+)
+
+publishTo := {
+  val tflyArtifactory = "http://build.ticketfly.com/artifactory/"
+  if (isSnapshot.value)
+    Some("tfly-snapshot" at tflyArtifactory + "libs-snapshot-local")
+  else
+    Some("tfly-release" at tflyArtifactory + "libs-release-local")
+}
