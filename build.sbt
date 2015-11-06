@@ -24,7 +24,9 @@ libraryDependencies ++= Seq(
 
 compileOrder := CompileOrder.JavaThenScala
 
-testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v")
+parallelExecution in Test := false
+
+//testOptions += Tests.Argument(TestFrameworks.JUnit)
 
 credentials += Credentials(Path.userHome / ".artifactory" / ".credentials")
 
