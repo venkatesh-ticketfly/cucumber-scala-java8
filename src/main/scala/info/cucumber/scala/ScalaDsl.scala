@@ -41,7 +41,7 @@ trait ScalaDsl extends GlueBase {
 
     def apply[T1](f: (T1) => Unit) = {
       val converterFn = (t1: T1) => For(f, t1) convert {
-        case List(a1: AnyRef) => f(a1.asInstanceOf[T1])
+        case List(a1) => f(a1.asInstanceOf[T1])
       }
 
       register(regexp, timeout, Bridge.A1[T1](converterFn))
@@ -49,14 +49,14 @@ trait ScalaDsl extends GlueBase {
 
     def apply[T1, T2](f: (T1, T2) => Unit) = {
       val converterFn = (t1: T1, t2: T2) => For(f, t1, t2) convert {
-        case List(a1: AnyRef, a2: AnyRef) => f(a1.asInstanceOf[T1], a2.asInstanceOf[T2])
+        case List(a1, a2) => f(a1.asInstanceOf[T1], a2.asInstanceOf[T2])
       }
       register(regexp, timeout, Bridge.A2[T1, T2](converterFn))
     }
 
     def apply[T1, T2, T3](f: (T1, T2, T3) => Unit) = {
       val converterFn = (t1: T1, t2: T2, t3: T3) => For(f, t1, t2, t3) convert {
-        case List(a1: AnyRef, a2: AnyRef, a3: AnyRef) =>
+        case List(a1, a2, a3) =>
           f(a1.asInstanceOf[T1], a2.asInstanceOf[T2], a3.asInstanceOf[T3])
       }
       register(regexp, timeout, Bridge.A3[T1, T2, T3](converterFn))
@@ -64,7 +64,7 @@ trait ScalaDsl extends GlueBase {
 
     def apply[T1, T2, T3, T4](f: (T1, T2, T3, T4) => Unit) = {
       val converterFn = (t1: T1, t2: T2, t3: T3, t4: T4) => For(f, t1, t2, t3, t4) convert {
-        case List(a1: AnyRef, a2: AnyRef, a3: AnyRef, a4: AnyRef) =>
+        case List(a1, a2, a3, a4) =>
           f(a1.asInstanceOf[T1], a2.asInstanceOf[T2], a3.asInstanceOf[T3], a4.asInstanceOf[T4])
       }
       register(regexp, timeout, Bridge.A4[T1, T2, T3, T4](converterFn))
@@ -72,7 +72,7 @@ trait ScalaDsl extends GlueBase {
 
     def apply[T1, T2, T3, T4, T5](f: (T1, T2, T3, T4, T5) => Unit) = {
       val converterFn = (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5) => For(f, t1, t2, t3, t4, t5) convert {
-        case List(a1: AnyRef, a2: AnyRef, a3: AnyRef, a4: AnyRef, a5: AnyRef) =>
+        case List(a1, a2, a3, a4, a5) =>
           f(a1.asInstanceOf[T1], a2.asInstanceOf[T2], a3.asInstanceOf[T3], a4.asInstanceOf[T4], a5.asInstanceOf[T5])
       }
       register(regexp, timeout, Bridge.A5[T1, T2, T3, T4, T5](converterFn))
@@ -80,7 +80,7 @@ trait ScalaDsl extends GlueBase {
 
     def apply[T1, T2, T3, T4, T5, T6](f: (T1, T2, T3, T4, T5, T6) => Unit) = {
       val converterFn = (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6) => For(f, t1, t2, t3, t4, t5, t6) convert {
-        case List(a1: AnyRef, a2: AnyRef, a3: AnyRef, a4: AnyRef, a5: AnyRef, a6: AnyRef) =>
+        case List(a1, a2, a3, a4, a5, a6) =>
           f(a1.asInstanceOf[T1], a2.asInstanceOf[T2], a3.asInstanceOf[T3], a4.asInstanceOf[T4], a5.asInstanceOf[T5],
             a6.asInstanceOf[T6])
       }
@@ -90,7 +90,7 @@ trait ScalaDsl extends GlueBase {
     def apply[T1, T2, T3, T4, T5, T6, T7](f: (T1, T2, T3, T4, T5, T6, T7) => Unit) = {
       val converterFn = (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7) =>
         For(f, t1, t2, t3, t4, t5, t6, t7) convert {
-          case List(a1: AnyRef, a2: AnyRef, a3: AnyRef, a4: AnyRef, a5: AnyRef, a6: AnyRef, a7: AnyRef) =>
+          case List(a1, a2, a3, a4, a5, a6, a7) =>
            f(a1.asInstanceOf[T1], a2.asInstanceOf[T2], a3.asInstanceOf[T3], a4.asInstanceOf[T4], a5.asInstanceOf[T5],
              a6.asInstanceOf[T6], a7.asInstanceOf[T7])
       }
@@ -100,7 +100,7 @@ trait ScalaDsl extends GlueBase {
     def apply[T1, T2, T3, T4, T5, T6, T7, T8](f: (T1, T2, T3, T4, T5, T6, T7, T8) => Unit) = {
       val converterFn = (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8) =>
         For(f, t1, t2, t3, t4, t5, t6, t7, t8) convert {
-          case List(a1: AnyRef, a2: AnyRef, a3: AnyRef, a4: AnyRef, a5: AnyRef, a6: AnyRef, a7: AnyRef, a8: AnyRef) =>
+          case List(a1, a2, a3, a4, a5, a6, a7, a8) =>
             f(a1.asInstanceOf[T1], a2.asInstanceOf[T2], a3.asInstanceOf[T3], a4.asInstanceOf[T4], a5.asInstanceOf[T5],
               a6.asInstanceOf[T6], a7.asInstanceOf[T7], a8.asInstanceOf[T8])
         }
@@ -110,8 +110,8 @@ trait ScalaDsl extends GlueBase {
     def apply[T1, T2, T3, T4, T5, T6, T7, T8, T9](f: (T1, T2, T3, T4, T5, T6, T7, T8, T9) => Unit) = {
       val converterFn = (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9) =>
         For(f, t1, t2, t3, t4, t5, t6, t7, t8, t9) convert {
-          case List(a1: AnyRef, a2: AnyRef, a3: AnyRef, a4: AnyRef, a5: AnyRef, a6: AnyRef, a7: AnyRef, a8: AnyRef,
-            a9: AnyRef) => f(a1.asInstanceOf[T1], a2.asInstanceOf[T2], a3.asInstanceOf[T3], a4.asInstanceOf[T4],
+          case List(a1, a2, a3, a4, a5, a6, a7, a8, a9) =>
+            f(a1.asInstanceOf[T1], a2.asInstanceOf[T2], a3.asInstanceOf[T3], a4.asInstanceOf[T4],
               a5.asInstanceOf[T5], a6.asInstanceOf[T6], a7.asInstanceOf[T7], a8.asInstanceOf[T8], a9.asInstanceOf[T9])
         }
       register(regexp, timeout, Bridge.A9[T1, T2, T3, T4, T5, T6, T7, T8, T9](converterFn))
@@ -128,8 +128,8 @@ trait ScalaDsl extends GlueBase {
         val convertedValues = ParameterInfo
           .fromTypes(functionParams(f.getClass, "apply")).toList
           .zip(values)
-          .map { case(paramInfo, value) =>
-            if (value.getClass.isAssignableFrom(classOf[DataTable])) {
+          .map { case (paramInfo, value) =>
+            if (value != null && value.getClass.isAssignableFrom(classOf[DataTable])) {
               new TableConverter(xstream, paramInfo).convert(value.asInstanceOf[DataTable], paramInfo.getType, false)
             } else {
               paramInfo.convert(value.asInstanceOf[String], xstream)
